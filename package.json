@@ -1,7 +1,7 @@
 {
   "name": "pos",
   "description": "fasttag part of speech tagger implementation",
-  "keywords": "nlp", "pos", "part of speech", "jspos", "fasttag"],
+  "keywords": ["nlp", "pos", "part of speech", "jspos", "fasttag"],
   "homepage": "https://github.com/dariusk/pos-js",
   "author": "Percy Wegmann",
   "version": "0.1.3",

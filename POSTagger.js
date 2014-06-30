@@ -83,8 +83,9 @@ POSTagger.prototype.tag = function(words){
                 ret[i] = "CD";
             }
 			// Attempt to convert into a number
-            if (parseFloat(words[i]))
+            if (!isNaN(parseFloat(words[i]))) {
                 ret[i] = "CD";
+            }
         }
         // rule 3: convert a noun to a past participle if words[i] ends with "ed"
         if (startsWith(ret[i], "N") && endsWith(words[i], "ed")) 

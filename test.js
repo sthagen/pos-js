@@ -17,3 +17,4 @@ for (i in tags) {
   console.log(tag[0] + " / " + tag[1]);
 }
 console.log("Tokenized and tagged " + words.length + " words in " + difference + " milliseconds");
+

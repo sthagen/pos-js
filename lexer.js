@@ -9,8 +9,6 @@
 module.exports = Lexer;
 
 var re = {
-  // http://daringfireball.net/2010/07/improved_regex_for_matching_urls
-  url: /\b(?:(?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/ig,
   number: /[0-9]*\.[0-9]+|[0-9]+/ig,
   space: /\s+/ig,
   unblank: /\S/,
@@ -75,8 +73,8 @@ LexerNode.prototype.toString = function(){
 }
 
 function Lexer(){
-  // Split by urls, then numbers, then whitespace, then punctuation
-  this.regexs = [re.url, re.number, re.space, re.punctuation];
+  // Split by then numbers, then whitespace, then punctuation
+  this.regexs = [re.number, re.space, re.punctuation];
 }
 
 Lexer.prototype.lex = function(string){

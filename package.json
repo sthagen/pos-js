@@ -4,7 +4,14 @@
   "keywords": ["nlp", "pos", "part of speech", "jspos", "fasttag"],
   "homepage": "https://github.com/dariusk/pos-js",
   "author": "Percy Wegmann",
-  "version": "0.1.7",
+  "contributors": [
+      {
+        "name": "Darius Kazemi",
+        "email": "darius.kazemi@gmail.com",
+        "url": "http://tinysubversions.com"
+      }
+    ],
+  "version": "0.1.7-1",
   "licenses": [{
     "type": "LGPL",
     "url": "http://www.gnu.org/licenses/lgpl.html"

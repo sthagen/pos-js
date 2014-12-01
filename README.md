@@ -8,8 +8,8 @@ pos-js also includes a basic lexer that can be used to extract words and
 other tokens from text strings.
 
 pos-js was written by [Percy Wegmann](http://www.percywegmann.com/) and
-is [available on Google code](http://www.percywegmann.com/). This fork
-adds node.js and npm support and is maintained by Fortnight Labs.
+is [available on Google code](https://code.google.com/p/jspos/). This fork
+adds node.js and npm support.
 
 LICENSE:
 

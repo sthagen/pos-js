@@ -1,11 +1,11 @@
 {
   "name": "pos",
-  "version": "0.1.7-1",
   "description": "fasttag part of speech tagger implementation",
-  "license": "LGPL",
   "keywords": ["nlp", "pos", "part of speech", "jspos", "fasttag"],
+  "version": "0.1.7-1",
+  "license": "LGPL",
   "repository": "dariusk/pos-js",
   "scripts": [
-    "main.js"
+    "index.js"
   ]
 }

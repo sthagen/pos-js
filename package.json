@@ -26,6 +26,9 @@
   "engines": {
     "node": ">=0"
   },
-  "main": "./main.js"
+  "scripts": {
+    "test": "node test.js"
+  },
+  "main": "./index.js"
 }
 

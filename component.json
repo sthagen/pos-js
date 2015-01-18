@@ -6,6 +6,9 @@
   "license": "LGPL",
   "repository": "dariusk/pos-js",
   "scripts": [
-    "index.js"
+    "index.js",
+    "lexer.js",
+    "POSTagger.js",
+    "lexicon.js"
   ]
 }

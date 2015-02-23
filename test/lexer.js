@@ -13,4 +13,10 @@ describe('Lexer#lex', function(){
       .lex("I made $some today.")
       .should.eql(['I', 'made', '$', 'some', 'today', '.']);
   });
+
+  it('should tokenize parentheses', function(){
+    lexer
+      .lex("I made $5.42 today (but it should have been more).")
+      .should.eql(['I', 'made', '$', '5.42', 'today', '(', 'but', 'it', 'should', 'have', 'been', 'more', ')', '.']);
+  });
 });

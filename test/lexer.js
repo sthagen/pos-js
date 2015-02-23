@@ -7,4 +7,10 @@ describe('Lexer#lex', function(){
       .lex("I made $5.42 today.")
       .should.eql(['I', 'made', '$', '5.42', 'today', '.']);
   });
+
+  it('should tokenize dollar sign when not followed by a number', function(){
+    lexer
+      .lex("I made $some today.")
+      .should.eql(['I', 'made', '$', 'some', 'today', '.']);
+  });
 });

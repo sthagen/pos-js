@@ -1,21 +1,29 @@
 {
   "name": "pos",
   "description": "fasttag part of speech tagger implementation",
-  "keywords": ["nlp", "pos", "part of speech", "jspos", "fasttag"],
+  "keywords": [
+    "nlp",
+    "pos",
+    "part of speech",
+    "jspos",
+    "fasttag"
+  ],
   "homepage": "https://github.com/dariusk/pos-js",
   "author": "Percy Wegmann",
   "contributors": [
-      {
-        "name": "Darius Kazemi",
-        "email": "darius.kazemi@gmail.com",
-        "url": "http://tinysubversions.com"
-      }
-    ],
+    {
+      "name": "Darius Kazemi",
+      "email": "darius.kazemi@gmail.com",
+      "url": "http://tinysubversions.com"
+    }
+  ],
   "version": "0.1.7-2",
-  "licenses": [{
-    "type": "LGPL",
-    "url": "http://www.gnu.org/licenses/lgpl.html"
-  }],
+  "licenses": [
+    {
+      "type": "LGPL",
+      "url": "http://www.gnu.org/licenses/lgpl.html"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/dariusk/pos-js.git"
@@ -31,4 +39,3 @@
   },
   "main": "./index.js"
 }
-

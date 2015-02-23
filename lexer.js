@@ -12,7 +12,7 @@ var re = {
   number: /[0-9]*\.[0-9]+|[0-9]+/ig,
   space: /\s+/ig,
   unblank: /\S/,
-  punctuation: /[\/\.\,\?\!\"\'\:\;\$\(\)]/ig
+  punctuation: /[\/\.\,\?\!\"\'\:\;\$\(\)\#]/ig
 }
 
 function LexerNode(string, regex, regexs){

@@ -35,7 +35,11 @@
     "node": ">=0"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "mocha"
   },
-  "main": "./index.js"
+  "main": "./index.js",
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "should": "~5.0.1"
+  }
 }

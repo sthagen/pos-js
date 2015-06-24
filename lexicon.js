@@ -179508,7 +179508,6 @@ module.exports = {
         "VBN"
     ], 
     "Open": [
-        "NNP", 
         "JJ", 
         "VB"
     ], 

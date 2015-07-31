@@ -162365,6 +162365,7 @@ module.exports = {
         "JJ"
     ], 
     "Opening": [
+        "NNP", 
         "VBG", 
         "NN"
     ], 

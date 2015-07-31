@@ -26,19 +26,19 @@ function startsWith($this, string){
  * @param {Object} string
  */
 function endsWith($this, string){
-    if (!string || string.length > $this.length) 
+    if (!string || string.length > $this.length)
         return false;
     return $this.indexOf(string) == $this.length - string.length;
 }
 
 POSTagger.prototype.wordInLexicon = function(word){
     var ss = this.lexicon[word];
-    if (ss != null) 
+    if (ss != null)
         return true;
     // 1/22/2002 mod (from Lisp code): if not in hash, try lower case:
-    if (!ss) 
+    if (!ss)
         ss = this.lexicon[word.toLowerCase()];
-    if (ss) 
+    if (ss)
         return true;
     return false;
 }
@@ -48,18 +48,18 @@ POSTagger.prototype.tag = function(words){
     for (var i = 0, size = words.length; i < size; i++) {
         var ss = this.lexicon[words[i]];
         // 1/22/2002 mod (from Lisp code): if not in hash, try lower case:
-        if (!ss) 
+        if (!ss)
             ss = this.lexicon[words[i].toLowerCase()];
-        if (!ss && words[i].length == 1) 
+        if (!ss && words[i].length == 1)
             ret[i] = words[i] + "^";
         // We need to catch scenarios where we pass things on the prototype
         // that aren't in the lexicon: "constructor" breaks this otherwise
-        if (!ss || typeof ss === "function") 
+        if (!ss || typeof ss === "function")
             ret[i] = "NN";
-        else 
+        else
             ret[i] = ss[0];
     }
-	
+
 	/**
      * Apply transformational rules
      **/
@@ -88,16 +88,16 @@ POSTagger.prototype.tag = function(words){
             }
         }
         // rule 3: convert a noun to a past participle if words[i] ends with "ed"
-        if (startsWith(ret[i], "N") && endsWith(words[i], "ed")) 
+        if (startsWith(ret[i], "N") && endsWith(words[i], "ed"))
             ret[i] = "VBN";
         // rule 4: convert any type to adverb if it ends in "ly";
-        if (endsWith(words[i], "ly")) 
+        if (endsWith(words[i], "ly"))
             ret[i] = "RB";
         // rule 5: convert a common noun (NN or NNS) to a adjective if it ends with "al"
         // bug: this applies also to NNP NNPS
         // bug: it said here: endsWith(word, "al"), this should be: endsWith(words[i], "al")
-        //if (startsWith(ret[i], "NN") && endsWith(word, "al")) 
-        if (((ret[i] === "NN") || (ret[i] === "NNS")) && endsWith(words[i], "al"))         
+        //if (startsWith(ret[i], "NN") && endsWith(word, "al"))
+        if (((ret[i] === "NN") || (ret[i] === "NNS")) && endsWith(words[i], "al"))
             //ret[i] = i, "JJ";
             ret[i] = "JJ";
         // rule 6: convert a noun to a verb if the preceding work is "would"
@@ -105,7 +105,7 @@ POSTagger.prototype.tag = function(words){
             ret[i] = "VB";
         // rule 7: if a word has been categorized as a common noun and it ends with "s",
         //         then set its type to plural common noun (NNS)
-        if (ret[i] == "NN" && endsWith(words[i], "s")) 
+        if (ret[i] == "NN" && endsWith(words[i], "s"))
             ret[i] = "NNS";
         // rule 8: convert a common noun to a present participle verb (i.e., a gerund)
         if (startsWith(ret[i], "NN") && endsWith(words[i], "ing"))
@@ -122,6 +122,14 @@ POSTagger.prototype.prettyPrint = function(taggedWords) {
 	for (i in taggedWords) {
         print(taggedWords[i][0] + "(" + taggedWords[i][1] + ")");
     }
+}
+
+POSTagger.prototype.extendLexicon = function(lexicon) {
+  for (var word in lexicon) {
+    if (!this.lexicon.hasOwnProperty(word)) {
+      this.lexicon[word] = lexicon[word];
+    }
+  }
 }
 
 //print(new POSTagger().tag(["i", "went", "to", "the", "store", "to", "buy", "5.2", "gallons", "of", "milk"]));

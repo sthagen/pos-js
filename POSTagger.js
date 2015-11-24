@@ -42,7 +42,7 @@ POSTagger.prototype.tag = function(words) {
       taggedSentence[i][1] = words[i] + "^";
     // We need to catch scenarios where we pass things on the prototype
     // that aren't in the lexicon: "constructor" breaks this otherwise
-    if (!ss || (typeof ss === "function"))
+    if (!ss || (Object.prototype.toString.call(ss) !== '[object Array]'))
       taggedSentence[i][1] = "NN";
     else
       taggedSentence[i][1] = ss[0];
@@ -71,4 +71,4 @@ POSTagger.prototype.extendLexicon = function(lexicon) {
   }
 }
 
-//print(new POSTagger().tag(["i", "went", "to", "the", "store", "to", "buy", "5.2", "gallons", "of", "milk"]));
+// console.log(new POSTagger().tag(["i", "went", "to", "the", "store", "to", "buy", "5.2", "gallons", "of", "milk"]));

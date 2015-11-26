@@ -9,9 +9,12 @@
 module.exports = Lexer;
 
 var re = {
+  ids: /[0-9a-z-]{8,45}/ig, // ID, CRC, UUID's
   number: /[0-9]*\.[0-9]+|[0-9]+/ig,
   space: /\s+/ig,
   unblank: /\S/,
+  email: /[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](?:\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](?:-?\.?[a-zA-Z0-9])*(?:\.[a-zA-Z](?:-?[a-zA-Z0-9])*)+/gi,
+  urls: /(?:https?:\/\/)(?:[\da-z\.-]+)\.(?:[a-z\.]{2,6})(?:[\/\w\.-\?]*)*\/?/ig,
   punctuation: /[\/\.\,\?\!\"\'\:\;\$\(\)\#]/ig
 }
 
@@ -73,8 +76,9 @@ LexerNode.prototype.toString = function(){
 }
 
 function Lexer(){
-  // Split by then numbers, then whitespace, then punctuation
-  this.regexs = [re.number, re.space, re.punctuation];
+  // URLS can contain IDS, so first urls, then ids
+  // then split by then numbers, then whitespace, then email and finally punctuation
+  this.regexs = [re.urls, re.ids, re.number, re.space, re.email, re.punctuation];
 }
 
 Lexer.prototype.lex = function(string){
@@ -86,3 +90,4 @@ Lexer.prototype.lex = function(string){
 
 //var lexer = new Lexer();
 //print(lexer.lex("I made $5.60 today in 1 hour of work.  The E.M.T.'s were on time, but only barely.").toString());
+

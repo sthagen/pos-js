@@ -39,7 +39,7 @@ describe('Lexer#lex', function(){
   
     lexer
       .lex("my share url is https://docs.google.com/spreadsheets/d/19bdnznUXdHEOlp0Pnp9JY0rug6VuA2R3zK4AACdFzhE/edit?usp=sharing")
-      .should.eql(['my','share','url', 'is', 'https://docs.google.com/spreadsheets/d/19bdnznUXdHEOlp0Pnp9JY0rug6VuA2R3zK4AACdFzhE/edit?usp=sharing']);
+      .should.eql(['my','share','url', 'is', 'https://docs.google.com/spreadsheets/d/19bdnznUXdHEOlp0Pnp9JY0rug6VuA2R3zK4AACdFzhE/edit?usp=sharing']);    
 
   });
 });

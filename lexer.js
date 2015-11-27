@@ -9,7 +9,7 @@
 module.exports = Lexer;
 
 var re = {
-  ids: /[0-9a-z-]{8,45}/ig, // ID, CRC, UUID's
+  ids: /\b[a-z0-9-]{8,45}\b/ig, // ID, CRC, UUID's
   number: /[0-9]*\.[0-9]+|[0-9]+/ig,
   space: /\s+/ig,
   unblank: /\S/,
@@ -19,6 +19,7 @@ var re = {
 }
 
 function LexerNode(string, regex, regexs){
+  string = string.trim();
   this.string = string;
   this.children = [];
 
@@ -57,13 +58,13 @@ LexerNode.prototype.fillArray = function(array){
       if (child.fillArray) {
         child.fillArray(array);
       } else if (re.unblank.test(child)) {
-        array.push(child);
+        array.push(child.trim());
       }
 
       if (i < this.matches.length) {
         var match = this.matches[i];
         if (re.unblank.test(match))
-          array.push(match);
+          array.push(match.trim());
       }
     }
   }
@@ -78,16 +79,19 @@ LexerNode.prototype.toString = function(){
 function Lexer(){
   // URLS can contain IDS, so first urls, then ids
   // then split by then numbers, then whitespace, then email and finally punctuation
+  // this.regexs = [re.urls, re.ids, re.number, re.space, re.email, re.punctuation];
   this.regexs = [re.urls, re.ids, re.number, re.space, re.email, re.punctuation];
 }
 
 Lexer.prototype.lex = function(string){
   var array = []
     , node = new LexerNode(string, this.regexs[0], this.regexs.slice(1));
+  
   node.fillArray(array);
   return array;
 }
 
 //var lexer = new Lexer();
 //print(lexer.lex("I made $5.60 today in 1 hour of work.  The E.M.T.'s were on time, but only barely.").toString());
+
 

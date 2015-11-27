@@ -9,7 +9,7 @@
 module.exports = Lexer;
 
 var re = {
-  ids: /\b[a-z0-9-]{8,45}\b/ig, // ID, CRC, UUID's
+  ids: /(?:^|\s)[a-z0-9-]{8,45}(?:$|\s)/ig, // ID, CRC, UUID's
   number: /[0-9]*\.[0-9]+|[0-9]+/ig,
   space: /\s+/ig,
   unblank: /\S/,

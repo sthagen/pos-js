@@ -1,5 +1,5 @@
 {
-  "name": "pos",
+  "name": "node-pos",
   "description": "fasttag part of speech tagger implementation",
   "keywords": [
     "nlp",

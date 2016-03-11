@@ -15,7 +15,8 @@ var re = {
   unblank: /\S/,
   email: /[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](?:\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](?:-?\.?[a-zA-Z0-9])*(?:\.[a-zA-Z](?:-?[a-zA-Z0-9])*)+/gi,
   urls: /(?:https?:\/\/)(?:[\da-z\.-]+)\.(?:[a-z\.]{2,6})(?:[\/\w\.\-\?#=]*)*\/?/ig,
-  punctuation: /[\/\.\,\?\!\"\'\:\;\$\(\)\#]/ig
+  punctuation: /[\/\.\,\?\!\"\'\:\;\$\(\)\#]/ig,
+  time: /(?:[0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5][0-9])\s?(?:[aApP][mM])/ig
 }
 
 function LexerNode(string, regex, regexs){
@@ -38,8 +39,7 @@ function LexerNode(string, regex, regexs){
     this.children = childElements;
   } else {
     // descend recursively
-    var nextRegex = regexs[0]
-      , nextRegexes = regexs.slice(1);
+    var nextRegex = regexs[0], nextRegexes = regexs.slice(1);
 
     for (var i in childElements) {
       if (childElements.hasOwnProperty(i)) {
@@ -80,13 +80,15 @@ function Lexer(){
   // URLS can contain IDS, so first urls, then ids
   // then split by then numbers, then whitespace, then email and finally punctuation
   // this.regexs = [re.urls, re.ids, re.number, re.space, re.email, re.punctuation];
-  this.regexs = [re.urls, re.ids, re.number, re.space, re.email, re.punctuation];
+  this.regexs = [
+    re.urls, re.ids, re.time, re.number, re.space, re.email, re.punctuation
+  ];
 }
 
 Lexer.prototype.lex = function(string){
   var array = []
     , node = new LexerNode(string, this.regexs[0], this.regexs.slice(1));
-  
+
   node.fillArray(array);
   return array;
 }

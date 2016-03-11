@@ -32,6 +32,27 @@ describe('Lexer#lex', function(){
       .should.eql(['I', '\'', 'm', 'fixing', 'issue', '#', 'tags', '.']);
   });
 
+  it('should tokenize times such as "10:00am".', function() {
+    lexer.lex("It is now 10:00am").should.eql([
+      "It", "is", "now", "10:00am"
+    ]);
+    lexer.lex("It is now 10:00 am").should.eql([
+      "It", "is", "now", "10:00 am"
+    ]);
+    lexer.lex("It is now 10:00pm").should.eql([
+      "It", "is", "now", "10:00pm"
+    ]);
+    lexer.lex("It is now 10:00 pm").should.eql([
+      "It", "is", "now", "10:00 pm"
+    ]);
+    lexer.lex("It is now 10:00AM").should.eql([
+      "It", "is", "now", "10:00AM"
+    ]);
+    lexer.lex("It is now 10:00PM").should.eql([
+      "It", "is", "now", "10:00PM"
+    ]);
+  });
+
   it('should tokenize but keep email, ids, and urls in tact', function(){
     lexer
       .lex("my email is me@exampleabc.com, http://example.com and 19bdnznUXdHEOlp0Pnp9JY0rug6VuA2R3zK4AACdFzhE")
@@ -39,7 +60,7 @@ describe('Lexer#lex', function(){
 
     lexer
       .lex("my share url is https://docs.google.com/spreadsheets/d/19bdnznUXdHEOlp0Pnp9JY0rug6VuA2R3zK4AACdFzhE/edit?usp=sharing")
-      .should.eql(['my','share','url', 'is', 'https://docs.google.com/spreadsheets/d/19bdnznUXdHEOlp0Pnp9JY0rug6VuA2R3zK4AACdFzhE/edit?usp=sharing']);    
+      .should.eql(['my','share','url', 'is', 'https://docs.google.com/spreadsheets/d/19bdnznUXdHEOlp0Pnp9JY0rug6VuA2R3zK4AACdFzhE/edit?usp=sharing']);
 
   });
 });

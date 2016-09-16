@@ -123,7 +123,7 @@ function rule5(taggedSentence, index) {
 
 // rule 6: convert a noun to a verb if the preceding work is "would"
 function rule6(taggedSentence, index) {
-  if ((index > 0) && startsWith(taggedSentence[index][1], "NN") && (taggedSentence[index][0].toLowerCase() === "would")) {
+  if ((index > 0) && startsWith(taggedSentence[index][1], "NN") && (taggedSentence[index - 1][0].toLowerCase() === "would")) {
     taggedSentence[index][1] = "VB";
   }
 }

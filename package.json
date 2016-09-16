@@ -1,5 +1,5 @@
 {
-  "name": "parts-of-speech",
+  "name": "pos",
   "description": "fasttag part of speech tagger implementation",
   "keywords": [
     "nlp",

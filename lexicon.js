@@ -202707,10 +202707,7 @@ module.exports = {
         "NNP"
     ], 
     "i": [
-        "NN", 
-        "FW", 
-        "NNP", 
-        "NNS"
+        "PRP"
     ], 
     "modeled": [
         "VBN", 

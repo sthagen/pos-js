@@ -69,7 +69,7 @@ TAGS:
     RBS Adverb, superlative     fastest
     RP Particle                 up,off
     SYM Symbol                  +,%,&
-    TO ÒtoÓ                     to
+    TO 'to'                     to
     UH Interjection             oh, oops
     VB verb, base form          eat
     VBD verb, past tense        ate
